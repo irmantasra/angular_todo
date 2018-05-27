@@ -15,6 +15,21 @@ h1 {
 	text-align: center;
 }
 
+/* a:link, a:visited {
+	color: (internal value);
+} */
+
+a:link:active, a:visited:active {
+	color: #53acff;
+}
+
+.about {
+	background-color: white;
+	padding: 7px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
 .todo-item {
 	display: flex;
 }

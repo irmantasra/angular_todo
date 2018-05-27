@@ -11,18 +11,31 @@
 	</form>
 	<div class="list-group">	
 				<div *ngFor="let item of todoItems" class="todo-item list-group-item">
-					<div class="todo-item-text-container">
+					<div  *ngIf="item.id!==editItem" class="todo-item-text-container">
 						<i class="todo-item-status"
 							(click)="toggleTodoStatus(item.id)">
 							<span *ngIf=item.completed class="glyphicon glyphicon-ok"></span>
 							<span *ngIf=!item.completed class="glyphicon glyphicon-remove remove-button"></span>
 					 	</i>
-						{{item.title}}
-						<button class="todo-item-delete"
-							(click)="deleteTodo(item.id)">
+						<span (click)="toggleEditItem(item.id)">
+							{{item.title}}
+						</span>
+						<button
+							class="todo-item-delete"
+							(click)="deleteTodo(item.id)"
+						>
 							<span class="glyphicon glyphicon-remove remove-button"></span>
 						</button>
 					</div>
+					<form *ngIf="item.id===editItem" (submit)="editTodo()">
+						<input
+							type="text"
+							class="form-control"
+							value="{{editTitle}}"
+							(change)="handleEditChange(newEditTitle.value)"
+							#newEditTitle
+						/>
+					</form>							
 				</div>
 	</div>	
 </div>

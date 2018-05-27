@@ -12,6 +12,8 @@ import todosData from '../../../data/todoItems';
 export class TodoListComponent implements OnInit {
 	todoItems:Item[];
 	newTitle:string = '';
+	editItem:string = '';
+	editTitle:string = '';
   constructor() { }
 
   ngOnInit() {
@@ -44,6 +46,34 @@ export class TodoListComponent implements OnInit {
 			if(item.id === id) return {id: item.id, title: item.title, completed: !item.completed};
 			return item;
 		})
+	}
+
+	toggleEditItem(id) {
+		//console.log(id);
+		this.editItem = id;
+		this.todoItems.map(item => {
+			if (item.id === id) this.editTitle = item.title;
+		});
+		console.log(this.editTitle);
+		return false;
+	}
+
+	handleEditChange(title) {
+		this.editTitle = title;
+	}
+
+	editTodo() {
+		this.todoItems = this.todoItems.map(item => {
+			if (item.id === this.editItem)
+				return {
+					id: item.id,
+					title: this.editTitle,
+					completed: item.completed
+				};
+			return item;
+		});
+		this.editItem = '';
+		this.editTitle = '';
 	}
 }
 

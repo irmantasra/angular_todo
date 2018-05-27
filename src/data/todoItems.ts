@@ -16,7 +16,12 @@ export default [
     },
     {
         id: '3',
-        title: 'Take out a person',
+        title: 'Learn some angular',
         completed: false
-    }
+		},
+		{
+			id: '4',
+			title: 'Push a commit',
+			completed: true
+		}
 ];
