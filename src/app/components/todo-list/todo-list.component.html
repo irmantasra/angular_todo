@@ -1,7 +1,30 @@
-<div class="list-group">	
-			<div *ngFor="let item of todoItems" class="todo-item list-group-item">
-				<div class="todo-item-text-container">
-					{{item.title}}
+<div>
+	<form (submit)="addTodo()">
+			<input type="text"
+				placeholder="What needs to be done?"
+				class="form-control"
+				value="{{newTitle}}"
+				(change)="handleInputChange(title.value)"
+				#title
+			/>
+			<input type="submit" hidden/>
+	</form>
+	<div class="list-group">	
+				<div *ngFor="let item of todoItems" class="todo-item list-group-item">
+					<div class="todo-item-text-container">
+						<i class="todo-item-status"
+							(click)="toggleTodoStatus(item.id)">
+							<span *ngIf=item.completed class="glyphicon glyphicon-ok"></span>
+							<span *ngIf=!item.completed class="glyphicon glyphicon-remove remove-button"></span>
+					 	</i>
+						{{item.title}}
+						<button class="todo-item-delete"
+							(click)="deleteTodo(item.id)">
+							<span class="glyphicon glyphicon-remove remove-button"></span>
+						</button>
+					</div>
 				</div>
-			</div>
+	</div>	
 </div>
+
+
