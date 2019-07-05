@@ -8,7 +8,7 @@
 <body>
 	<div class="container">
 		<h1>Angular Todo List</h1>
-		<div class="todo-app" style='background-color: "{{color}}"'>
+		<div class="todo-app" [style.background-color]="color">
 			<router-outlet></router-outlet>
 			<div class="navbar navbar-default nav-center">
 				<div class="navbar-header">

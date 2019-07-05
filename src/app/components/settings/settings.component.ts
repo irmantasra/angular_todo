@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import defaultSettings from '../../../data/defaultAppSettings';
+import { DataService } from "../data.service";
 
 @Component({
     selector: 'settings',
@@ -8,15 +8,15 @@ import defaultSettings from '../../../data/defaultAppSettings';
 })
 
 export class SettingsComponent implements OnInit {
-    color:string = '';
+    color:string;
 
-    constructor() {}
+    constructor(private data: DataService) {}
 
     ngOnInit() {
-        this.color = defaultSettings.appColor;
+        this.data.color.subscribe(color => this.color = color);
     }
 
     onColorChange({color}) {
-        this.color = color;
+        this.data.changeColor(color.hex);
     }
 }

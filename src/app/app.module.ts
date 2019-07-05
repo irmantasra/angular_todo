@@ -8,6 +8,8 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AboutComponent } from './components/about/about.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
+import { DataService } from './components/data.service';
+
 const appRoutes: Routes = [
 	{path:'', component:TodoListComponent},
   {path:'about', component:AboutComponent},
@@ -26,7 +28,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ColorSliderModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
