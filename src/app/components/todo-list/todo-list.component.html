@@ -14,8 +14,9 @@
 					<div  *ngIf="item.id!==editItem" class="todo-item-text-container">
 						<i class="todo-item-status"
 							(click)="toggleTodoStatus(item.id)">
-							<span *ngIf=item.completed class="glyphicon glyphicon-ok"></span>
-							<span *ngIf=!item.completed class="glyphicon glyphicon-remove remove-button"></span>
+							<span class="check-box">
+								<span class="glyphicon glyphicon-ok" [style.opacity]="(item.completed ? 1 : 0)"></span>
+							</span>
 					 	</i>
 						<span (click)="toggleEditItem(item.id)">
 							{{item.title}}
@@ -24,7 +25,7 @@
 							class="todo-item-delete"
 							(click)="deleteTodo(item.id)"
 						>
-							<span class="glyphicon glyphicon-remove remove-button"></span>
+							<span class="glyphicon glyphicon-trash"></span>
 						</button>
 					</div>
 					<form *ngIf="item.id===editItem" (submit)="editTodo()">

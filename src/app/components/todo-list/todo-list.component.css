@@ -1,0 +1,11 @@
+.check-box {
+    padding: 1px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+}
+
+.check-box > * {
+    transition: all ease .5s;
+}
